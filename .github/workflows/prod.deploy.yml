@@ -6,6 +6,17 @@ on:
       - main
 
 jobs:
+
+  create-env-files:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: iamsauravsharma/create-dotenv@v1.2.1
+        env: # env available for only this steps
+          APP_ENV: prod
+          APP_SECRET: ${{secrets.APP_SECRET}}
+          DATABASE_URL: ${{secrets.DATABASE_URL}}
+
   build:
     runs-on: ubuntu-latest
     steps:

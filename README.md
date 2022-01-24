@@ -37,5 +37,4 @@ or:
 ```
 
 ## Deployment
-
-Coming soon...
+auto Deploy on push main

@@ -12,4 +12,4 @@ COPY --from=builder /app /var/www/babyloans
 RUN curl -sS https://get.symfony.com/cli/installer | bash
 RUN mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 
-CMD [ "symfony", "server:start", "--port=80" ]
+CMD [ "symfony", "server:start" ]

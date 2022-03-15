@@ -2,26 +2,53 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use App\Repository\TokenRepository;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiFilter;
 
 #[ORM\Entity(repositoryClass: TokenRepository::class)]
+#[ApiResource(
+    normalizationContext: [
+        'groups' => [
+            Token::TOKEN_READ,
+        ],
+    ],
+    paginationEnabled: true,
+    paginationItemsPerPage: 10,
+    paginationClientItemsPerPage: true,
+    itemOperations: [
+        'get',
+    ],
+    collectionOperations: [
+        'get',
+    ],
+)]
+#[ApiFilter(SearchFilter::class, properties: ['id' => 'exact', 'symbol' => 'partial', 'color' => 'exact'])]
 class Token
 {
+    const TOKEN_READ = "token:read";
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups([Token::TOKEN_READ])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups([Token::TOKEN_READ])]
     private $symbol;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups([Token::TOKEN_READ])]
     private $color;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups([Token::TOKEN_READ])]
     private $logoUrl;
 
     #[ORM\OneToMany(mappedBy: 'token', targetEntity: Rate::class, orphanRemoval: true)]

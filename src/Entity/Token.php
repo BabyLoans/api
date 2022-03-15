@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\TokenRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use App\Repository\TokenRepository;
 
 #[ORM\Entity(repositoryClass: TokenRepository::class)]
 class Token
@@ -16,7 +16,13 @@ class Token
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $name;
+    private $symbol;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $color;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $logoUrl;
 
     #[ORM\OneToMany(mappedBy: 'token', targetEntity: Rate::class, orphanRemoval: true)]
     private $rates;
@@ -31,14 +37,38 @@ class Token
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getSymbol(): ?string
     {
-        return $this->name;
+        return $this->symbol;
     }
 
-    public function setName(string $name): self
+    public function setSymbol(string $symbol): self
     {
-        $this->name = $name;
+        $this->symbol = $symbol;
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): self
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    public function getLogoUrl(): ?string
+    {
+        return $this->logoUrl;
+    }
+
+    public function setLogoUrl(?string $logoUrl): self
+    {
+        $this->logoUrl = $logoUrl;
 
         return $this;
     }

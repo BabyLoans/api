@@ -2,8 +2,8 @@
 
 namespace App\Entity;
 
-use App\Repository\RateRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\RateRepository;
 
 #[ORM\Entity(repositoryClass: RateRepository::class)]
 class Rate
@@ -15,6 +15,9 @@ class Rate
 
     #[ORM\Column(type: 'float')]
     private $value;
+
+    #[ORM\Column(type: 'datetime')]
+    private $createdAt;
 
     #[ORM\ManyToOne(targetEntity: Token::class, inversedBy: 'rates')]
     #[ORM\JoinColumn(nullable: false)]
@@ -33,6 +36,18 @@ class Rate
     public function setValue(float $value): self
     {
         $this->value = $value;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

@@ -52,6 +52,11 @@ class Rate
     #[Groups([Rate::RATE_READ])]
     private $token;
 
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

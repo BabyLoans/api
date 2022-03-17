@@ -51,12 +51,17 @@ class Token
     #[Groups([Token::TOKEN_READ])]
     private $logoUrl;
 
+    #[ORM\Column(type: 'boolean')]
+    #[Groups([Token::TOKEN_READ])]
+    private $isActive;
+
     #[ORM\OneToMany(mappedBy: 'token', targetEntity: Rate::class, orphanRemoval: true)]
     private $rates;
 
     public function __construct()
     {
         $this->rates = new ArrayCollection();
+        $this->isActive = true;
     }
 
     public function getId(): ?int
@@ -96,6 +101,18 @@ class Token
     public function setLogoUrl(?string $logoUrl): self
     {
         $this->logoUrl = $logoUrl;
+
+        return $this;
+    }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
 
         return $this;
     }

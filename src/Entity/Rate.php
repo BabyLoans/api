@@ -43,6 +43,10 @@ class Rate
     #[Groups([Rate::RATE_READ])]
     private $value;
 
+    #[ORM\Column(type: 'boolean')]
+    #[Groups([Rate::RATE_READ])]
+    private $isCurrent;
+
     #[ORM\Column(type: 'datetime')]
     #[Groups([Rate::RATE_READ])]
     private $createdAt;
@@ -70,6 +74,18 @@ class Rate
     public function setValue(float $value): self
     {
         $this->value = $value;
+
+        return $this;
+    }
+
+    public function getIsCurrent(): ?bool
+    {
+        return $this->isCurrent;
+    }
+
+    public function setIsCurrent(bool $isCurrent): self
+    {
+        $this->isCurrent = $isCurrent;
 
         return $this;
     }

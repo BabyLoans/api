@@ -28,6 +28,12 @@ class RateFixtures extends Fixture implements DependentFixtureInterface
                     ->setValue(random_int(1, 100))
                     ->setCreatedAt((new \DateTime())->modify("-$index days"));
 
+                if ($index === 0) {
+                    $rate->setIsCurrent(true);
+                } else {
+                    $rate->setIsCurrent(false);
+                }
+
                 $manager->persist($rate);
             }
         }

@@ -12,36 +12,43 @@ class TokenFixtures extends Fixture
     {
         $token = new Token();
         $token->setColor("#f0ba17")
-            ->setLogoUrl("https://assets.coingecko.com/coins/images/825/thumb_2x/bnb-icon2_2x.png?1644979850%202x")
+            ->setLogoUrl("https://media.discordapp.net/attachments/907921129589600277/953963429151010816/bnb_logo.png")
             ->setSymbol("BNB");
 
         $manager->persist($token);
 
         $token = new Token();
         $token->setColor("#26a17c")
-            ->setLogoUrl("https://assets.coingecko.com/coins/images/325/thumb_2x/Tether-logo.png?1598003707%202x")
+            ->setLogoUrl("https://media.discordapp.net/attachments/907921129589600277/953963430090518568/usdt_logo.png")
             ->setSymbol("USDT");
 
         $manager->persist($token);
 
         $token = new Token();
         $token->setColor("#2277ca")
-            ->setLogoUrl("https://assets.coingecko.com/coins/images/6319/thumb_2x/USD_Coin_icon.png?1547042389%202x")
+            ->setLogoUrl("https://media.discordapp.net/attachments/907921129589600277/953963429847261204/usdc_logo.png")
             ->setSymbol("USDC");
 
         $manager->persist($token);
 
         $token = new Token();
         $token->setColor("#f0ba17")
-            ->setLogoUrl("https://assets.coingecko.com/coins/images/9576/thumb_2x/BUSD.png?1568947766%202x")
+            ->setLogoUrl("https://media.discordapp.net/attachments/907921129589600277/953963429339758652/busd_logo.png")
             ->setSymbol("BUSD");
 
         $manager->persist($token);
 
         $token = new Token();
         $token->setColor("#fab218")
-            ->setLogoUrl("https://assets.coingecko.com/coins/images/9956/thumb_2x/4943.png?1636636734%202x")
+            ->setLogoUrl("https://media.discordapp.net/attachments/907921129589600277/953963429557833748/dai_logo.png")
             ->setSymbol("DAI");
+
+        $manager->persist($token);
+
+        $token = new Token();
+        $token->setColor("#5301fd")
+            ->setLogoUrl("https://cdn.discordapp.com/attachments/907921129589600277/953963430325407794/bbl_logo.png")
+            ->setSymbol("BBL");
 
         $manager->persist($token);
 

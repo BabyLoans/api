@@ -6,6 +6,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\RateRepository;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
@@ -31,6 +32,7 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 #[ApiFilter(SearchFilter::class, properties: ['id' => 'exact', 'value' => 'exact', 'token' => 'exact'])]
 #[ApiFilter(DateFilter::class, properties: ['createdAt'])]
 #[ApiFilter(BooleanFilter::class, properties: ['isCurrent'])]
+#[ApiFilter(OrderFilter::class, properties: ['value', 'createdAt'])]
 class Rate
 {
     const RATE_READ = "rate:read";

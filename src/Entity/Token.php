@@ -36,23 +36,23 @@ class Token
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups([Token::TOKEN_READ])]
+    #[Groups([Token::TOKEN_READ, Rate::RATE_READ])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups([Token::TOKEN_READ])]
+    #[Groups([Token::TOKEN_READ, Rate::RATE_READ])]
     private $symbol;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups([Token::TOKEN_READ])]
+    #[Groups([Token::TOKEN_READ, Rate::RATE_READ])]
     private $color;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups([Token::TOKEN_READ])]
+    #[Groups([Token::TOKEN_READ, Rate::RATE_READ])]
     private $logoUrl;
 
     #[ORM\Column(type: 'boolean')]
-    #[Groups([Token::TOKEN_READ])]
+    #[Groups([Token::TOKEN_READ, Rate::RATE_READ])]
     private $isActive;
 
     #[ORM\OneToMany(mappedBy: 'token', targetEntity: Rate::class, orphanRemoval: true)]
